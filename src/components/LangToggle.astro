@@ -1,0 +1,56 @@
+---
+
+---
+
+<div class="relative inline-block">
+  <button
+    id="lang-toggle"
+    class="flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest border border-base-content/15 hover:border-primary/50 hover:text-primary transition-all cursor-pointer bg-transparent"
+    aria-label="Switch language"
+    type="button"
+  >
+    <span id="lang-label">{Astro.request.headers.get('cookie')?.includes('lang=va') ? 'VA' : 'ES'}</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ><circle cx="12" cy="12" r="10"></circle><line
+        x1="2"
+        y1="12"
+        x2="22"
+        y2="12"></line><path
+        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+      ></path></svg>
+  </button>
+  <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-24 bg-base-100 border border-base-content/15 rounded shadow-lg z-50">
+    <button class="block w-full text-left px-4 py-2 text-[10px] uppercase hover:bg-primary/10" type="button" data-lang="es">ESPAÑOL</button>
+    <button class="block w-full text-left px-4 py-2 text-[10px] uppercase hover:bg-primary/10" type="button" data-lang="va">VALENCIÀ</button>
+  </div>
+</div>
+<script>
+  if (typeof window !== 'undefined') {
+    let lang = (localStorage.getItem('lang') || 'es').toLowerCase();
+    let label = lang === 'va' ? 'VA' : 'ES';
+    document.getElementById('lang-label').textContent = label;
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('lang-toggle').onclick = function() {
+      document.getElementById('lang-dropdown').classList.toggle('hidden');
+    };
+    document.querySelectorAll('#lang-dropdown button').forEach(btn => {
+      btn.onclick = function() {
+        const newLang = this.getAttribute('data-lang');
+        localStorage.setItem('lang', newLang);
+        document.documentElement.setAttribute('lang', newLang);
+        document.getElementById('lang-label').textContent = newLang === 'va' ? 'VA' : 'ES';
+        document.getElementById('lang-dropdown').classList.add('hidden');
+        location.reload();
+      };
+    });
+  }
+</script>
