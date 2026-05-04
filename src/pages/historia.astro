@@ -1,6 +1,69 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { historyChapters } from "../data/content";
 ---
-<!-- Página: Historia -->
-<section>
-  <h1>Historia</h1>
-</section>
+
+<Layout
+  title="Historia"
+  description="La historia de la Falla Tirant lo Blanc de l’Alcúdia."
+>
+  <Navbar />
+  <main>
+    <!-- Header -->
+    <section
+      class="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-secondary text-primary-content relative overflow-hidden"
+    >
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <div class="reveal">
+          <h1 class="text-4xl sm:text-6xl md:text-8xl mb-6 sm:mb-8">
+            HISTORIA
+          </h1>
+          <span class="text-accent text-xl sm:text-2xl md:text-3xl">
+            Falla Tirant lo Blanc - L'Alcúdia
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section class="py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
+          <!-- Image side -->
+          <div class="reveal-left">
+            <img
+              src={historyChapters[0].image.src}
+              alt="Historia de la Falla Tirant lo Blanc"
+              class="w-full shadow-2xl transition-all duration-700"
+            />
+          </div>
+
+          <!-- Text side -->
+          <div class="reveal-right">
+            <div class="space-y-6 text-sm leading-relaxed">
+              <p>
+                La Falla Tirant lo Blanc de l’Alcúdia és una comissió jove però amb una gran trajectòria de treball, convivència i passió per la festa fallera. Des de la seua fundació en 2012, la nostra falla ha crescut any rere any gràcies a l’esforç, la il·lusió i el compromís de totes les persones que formen part d’esta gran família.
+              </p>
+              <p>
+                Som una falla que combina la tradició amb un esperit modern i participatiu. Creiem en les Falles com una expressió de cultura, art i convivència, on cada acte, cada sopar i cada reunió reforcen els llaços entre fallers i falleres. El nostre objectiu sempre ha sigut construir una comissió unida, oberta al poble i amb ganes de continuar evolucionant sense perdre l’essència fallera.
+              </p>
+              <p>
+                Al llarg d’estos anys hem consolidat un ambient dinàmic i acollidor, amb activitats per a totes les edats, fomentant la participació i la germanor. Treballem amb il·lusió per mantindre viva la flama de la festa, aportant idees noves, cuidant els detalls i fent de cada exercici una experiència especial.
+              </p>
+              <p>
+                La Falla Tirant lo Blanc és, sobretot, persones, un grup que comparteix valors com el respecte, la col·laboració i l’orgull de formar part d’un projecte comú. Des de 2012, continuem sumant història, vivències i moments que fan gran la nostra falla i reforcen el nostre compromís amb les Falles i amb el poble de l’Alcúdia.
+              </p>
+              <p>
+                Benvinguts a la Falla Tirant lo Blanc.<br>
+                Una falla feta amb il·lusió, treball i sentiment faller.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

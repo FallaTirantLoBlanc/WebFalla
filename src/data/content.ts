@@ -13,7 +13,7 @@
 import fotoInfantri from "../assets/foto-infantri.jpg";
 import tank from "../assets/alusista-tank.jpg";
 import artilery from "../assets/artilery.jpg";
-import congoMission from "../assets/congo-pbbmission.jpg";
+import fotoHistoria from "../assets/foto-historia.JPG";
 import pbbMisi from "../assets/PBB-misicongo.jpg";
 import rocketLauncher from "../assets/rocket-launcher.jpg";
 
@@ -28,7 +28,7 @@ export const heroData = {
     "The primary operational command of your organization. Ready for rapid deployment across the nation.",
   /** CTA button labels (also in i18n) */
   cta1Label: "Our History",
-  cta1Href: "/sejarah",
+  cta1Href: "/historia",
   cta2Label: "Organization",
   cta2Href: "/struktur",
 };
@@ -67,55 +67,59 @@ export const divisions = [
 // ── Timeline Events ────────────────────────────────────────
 export const timelineEvents = [
   {
-    year: "1961",
+    year: "2027",
     titleKey: "timeline.1.title",
     descKey: "timeline.1.desc",
     tagKey: "timeline.1.tag",
-    title: "[Original Name] Established",
-    description:
-      "Established by official decree as the first strategic reserve corps under the command of [First Commander Name].",
-    tag: "FOUNDING",
+    title: "Objetivo 200 falleros!",
+    description: "Meta para el crecimiento de la comisión fallera.",
+    tag: "OBJETIVO",
   },
   {
-    year: "1962",
+    year: "2026",
     titleKey: "timeline.2.title",
     descKey: "timeline.2.desc",
     tagKey: "timeline.2.tag",
-    title: "Operation [Name]",
-    description:
-      "Forces were directly involved in a major military operation for territorial integrity.",
-    tag: "OPERATION",
+    title: "150 falleros censados",
+    description: "Número de falleros registrados en la comisión.",
+    tag: "CENSO",
   },
   {
-    year: "1963",
+    year: "2020",
     titleKey: "timeline.3.title",
     descKey: "timeline.3.desc",
     tagKey: "timeline.3.tag",
-    title: "Official Renaming",
-    description:
-      "The unit was officially renamed to [Unit Name], marking a new era of organizational restructuring.",
-    tag: "INAUGURATION",
+    title: "Año de la pandemia",
+    description: "Impacto de la COVID-19 en las actividades falleras.",
+    tag: "PANDEMIA",
   },
   {
-    year: "1975",
+    year: "2018",
     titleKey: "timeline.4.title",
     descKey: "timeline.4.desc",
     tagKey: "timeline.4.tag",
-    title: "Operation [Name]",
-    description:
-      "Played a key role in border security operations and territorial integration.",
-    tag: "OPERATION",
+    title: "primer casal con 96 falleros censados",
+    description: "Inicio del casal fallero con 96 miembros.",
+    tag: "CASAL",
   },
   {
-    year: "Now",
+    year: "2013",
     titleKey: "timeline.5.title",
     descKey: "timeline.5.desc",
     tagKey: "timeline.5.tag",
     yearKey: "timeline.5.year",
-    title: "Peacekeeping Missions",
-    description:
-      "Soldiers serve as part of international peacekeeping contingents in missions worldwide.",
-    tag: "INTERNATIONAL",
+    title: "Primera crida y primeros monumentos",
+    description: "Primeros actos públicos y monumentos de la falla.",
+    tag: "INICIO",
+  },
+  {
+    year: "2012",
+    titleKey: "timeline.6.title",
+    descKey: "timeline.6.desc",
+    tagKey: "timeline.6.tag",
+    title: "Nace la Falla Tirant lo Blanc",
+    description: "Fundación de la comisión fallera en l’Alcúdia.",
+    tag: "NACIMIENTO",
   },
 ];
 
@@ -141,16 +145,10 @@ export const galleryImages = [
     span: "row-span-1 col-span-1",
   },
   {
-    src: congoMission.src,
-    alt: "Peacekeeping Mission",
-    i18n: "gallery.img4",
-    span: "row-span-2 col-span-2",
-  },
-  {
     src: pbbMisi.src,
     alt: "International Contingent",
     i18n: "gallery.img5",
-    span: "row-span-1 col-span-1",
+    span: "row-span-2 col-span-2",
   },
   {
     src: rocketLauncher.src,
@@ -170,8 +168,8 @@ export const historyChapters = [
     titleHtml: 'The <span class="text-primary">Founding</span>',
     captionI18nKey: "sejarah.ch1.caption",
     caption: "International Contingent — [Location]",
-    image: congoMission,
-    imageAlt: "International contingent on a mission",
+    image: fotoHistoria,
+    imageAlt: "Historia de la Falla Tirant lo Blanc",
     paragraphs: [
       {
         i18nKey: "sejarah.ch1.p1",

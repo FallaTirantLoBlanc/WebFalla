@@ -1,7 +1,7 @@
 ---
 // CUSTOMIZE: Replace hero image and logo in src/assets/
-import heroImage from "../assets/foto-infantri.jpg";
-import logo from "../assets/Lambang_Kostrad-removebg-preview.png";
+import heroImage from "../assets/foto-fondo.JPG";
+import logo from "../assets/logo-fondo.png";
 import { siteConfig } from "../data/siteConfig";
 import { heroData } from "../data/content";
 ---
@@ -63,33 +63,6 @@ import { heroData } from "../data/content";
     >
       {heroData.description}
     </p>
-
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <a
-        href={heroData.cta1Href}
-        class="btn-tactical py-4 px-10 text-sm border-accent text-white hover:bg-accent hover:text-secondary"
-        data-i18n="hero.cta1">{heroData.cta1Label}</a
-      >
-      <a
-        href={heroData.cta2Href}
-        class="text-xs uppercase tracking-widest font-bold text-white/70 hover:text-accent transition-colors flex items-center gap-2"
-      >
-        <span data-i18n="hero.cta2">{heroData.cta2Label}</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
-            points="12 5 19 12 12 19"></polyline></svg
-        >
-      </a>
-    </div>
   </div>
 
   <div

@@ -94,36 +94,42 @@ export const translations = {
   // ========================================
   // TIMELINE
   // ========================================
-  "timeline.1.tag": { id: "PEMBENTUKAN", en: "FOUNDING" },
-  "timeline.1.title": { id: "[Original Name] Didirikan", en: "[Original Name] Established" },
+  "timeline.1.tag": { es: "OBJETIVO", va: "OBJECTIU" },
+  "timeline.1.title": { es: "Objetivo 200 falleros!", va: "Objectiu 200 fallers!" },
   "timeline.1.desc": {
-    id: "Dibentuk berdasarkan keputusan resmi sebagai korps cadangan strategis di bawah pimpinan [Commander Name].",
-    en: "Established by official decree as the strategic reserve corps under the command of [Commander Name].",
+    es: "Meta para el crecimiento de la comisión fallera.",
+    va: "Meta per al creixement de la comissió fallera."
   },
-  "timeline.2.tag": { id: "OPERASI", en: "OPERATION" },
-  "timeline.2.title": { id: "Operasi [Name]", en: "Operation [Name]" },
+  "timeline.2.tag": { es: "CENSO", va: "CENSA" },
+  "timeline.2.title": { es: "150 falleros censados", va: "150 fallers censats" },
   "timeline.2.desc": {
-    id: "Pasukan terlibat langsung dalam operasi militer untuk integritas wilayah.",
-    en: "Forces were directly involved in a military operation for territorial integrity.",
+    es: "Número de falleros registrados en la comisión.",
+    va: "Nombre de fallers registrats en la comissió."
   },
-  "timeline.3.tag": { id: "PERESMIAN", en: "INAUGURATION" },
-  "timeline.3.title": { id: "Resmi Menjadi [Unit Name]", en: "Officially Became [Unit Name]" },
+  "timeline.3.tag": { es: "PANDEMIA", va: "PANDEMIA" },
+  "timeline.3.title": { es: "Año de la pandemia", va: "Any de la pandèmia" },
   "timeline.3.desc": {
-    id: "Nama resmi diubah menjadi [Full Official Name], menandai era baru restrukturisasi organisasi.",
-    en: "The name was officially changed to [Full Official Name], marking a new era of organizational restructuring.",
+    es: "Impacto de la COVID-19 en las actividades falleras.",
+    va: "Impacte de la COVID-19 en les activitats falleres."
   },
-  "timeline.4.tag": { id: "OPERASI", en: "OPERATION" },
-  "timeline.4.title": { id: "Operasi [Name]", en: "Operation [Name]" },
+  "timeline.4.tag": { es: "CASAL", va: "CASAL" },
+  "timeline.4.title": { es: "primer casal con 96 falleros censados", va: "primer casal amb 96 fallers censats" },
   "timeline.4.desc": {
-    id: "Berperan dalam operasi pengamanan wilayah perbatasan dan integrasi teritorial.",
-    en: "Played a key role in border security operations and territorial integration.",
+    es: "Inicio del casal fallero con 96 miembros.",
+    va: "Inici del casal faller amb 96 membres."
   },
-  "timeline.5.tag": { id: "INTERNASIONAL", en: "INTERNATIONAL" },
-  "timeline.5.title": { id: "Misi Perdamaian", en: "Peacekeeping Missions" },
-  "timeline.5.year": { id: "Kini", en: "Now" },
+  "timeline.5.tag": { es: "INICIO", va: "INICI" },
+  "timeline.5.title": { es: "Primera crida y primeros monumentos", va: "Primera crida i primers monuments" },
   "timeline.5.desc": {
-    id: "Prajurit menjadi bagian dari kontingen dalam misi perdamaian internasional di berbagai negara.",
-    en: "Soldiers serve as part of international peacekeeping contingents in missions worldwide.",
+    es: "Primeros actos públicos y monumentos de la falla.",
+    va: "Primers actes públics i monuments de la falla."
+  },
+
+  "timeline.6.tag": { es: "NACIMIENTO", va: "NAIXEMENT" },
+  "timeline.6.title": { es: "Nace la Falla Tirant lo Blanc", va: "Neix la Falla Tirant lo Blanc" },
+  "timeline.6.desc": {
+    es: "Fundación de la comisión fallera en l’Alcúdia.",
+    va: "Fundació de la comissió fallera a l’Alcúdia."
   },
 
   // ========================================
@@ -139,69 +145,69 @@ export const translations = {
   // ========================================
   // SEJARAH PAGE
   // ========================================
-  "sejarah.label": { id: "Sejarah", en: "History" },
+  "sejarah.label": { es: "Historia", va: "Història" },
   "sejarah.title": {
-    id: 'Dari [Original Name] <span class="text-accent">ke [Unit Name]</span>',
-    en: 'From [Original Name] <span class="text-accent">to [Unit Name]</span>',
+    es: 'De [Nombre Original] <span class="text-accent">a [Nombre de la Unidad]</span>',
+    va: 'De [Nom Original] <span class="text-accent">a [Nom de la Unitat]</span>'
   },
   "sejarah.subtitle": {
-    id: "Perjalanan lebih dari enam dekade sebagai kekuatan cadangan strategis.",
-    en: "Over six decades as a strategic reserve force.",
+    es: "Más de seis décadas como fuerza de reserva estratégica.",
+    va: "Més de sis dècades com a força de reserva estratègica."
   },
 
-  "sejarah.ch1.year": { id: "1961", en: "1961" },
+  "sejarah.ch1.year": { es: "1961", va: "1961" },
   "sejarah.ch1.title": {
-    id: 'Awal <span class="text-primary">Pembentukan</span>',
-    en: 'The <span class="text-primary">Founding</span>',
+    es: 'La <span class="text-primary">Fundación</span>',
+    va: 'La <span class="text-primary">Fundació</span>'
   },
   "sejarah.ch1.p1": {
-    id: "Pada awal dekade 1960-an, pimpinan menilai perlunya satuan cadangan strategis yang bisa dikerahkan dengan cepat ke seluruh wilayah.",
-    en: "In the early 1960s, leadership recognized the need for a strategic reserve unit that could be rapidly deployed across the nation.",
+    es: "A principios de la década de 1960, el liderazgo reconoció la necesidad de una unidad de reserva estratégica que pudiera desplegarse rápidamente en todo el territorio.",
+    va: "A principis de la dècada de 1960, el lideratge va reconéixer la necessitat d'una unitat de reserva estratègica que poguera desplegar-se ràpidament en tot el territori."
   },
   "sejarah.ch1.p2": {
-    id: 'Melalui keputusan resmi tanggal <strong class="text-base-content">[Date]</strong>, dibentuklah <strong class="text-base-content">[Original Unit Name]</strong>. Panglima pertamanya adalah [Commander Name].',
-    en: 'By official decree dated <strong class="text-base-content">[Date]</strong>, the <strong class="text-base-content">[Original Unit Name]</strong> was established. Its first commander was [Commander Name].',
+    es: 'Por decreto oficial fechado <strong class="text-base-content">[Fecha]</strong>, se estableció <strong class="text-base-content">[Nombre Original de la Unidad]</strong>. Su primer comandante fue [Nombre del Comandante].',
+    va: 'Per decret oficial datat <strong class="text-base-content">[Data]</strong>, es va establir <strong class="text-base-content">[Nom Original de la Unitat]</strong>. El seu primer comandant va ser [Nom del Comandant].'
   },
-  "sejarah.ch1.caption": { id: "Kontingen — [Location]", en: "Contingent — [Location]" },
+  "sejarah.ch1.caption": { es: "Contingente Internacional — [Ubicación]", va: "Contingent Internacional — [Ubicació]" },
 
-  "sejarah.ch2.year": { id: "1963", en: "1963" },
+  "sejarah.ch2.year": { es: "1963", va: "1963" },
   "sejarah.ch2.title": {
-    id: 'Menjadi <span class="text-primary">[UNIT NAME]</span>',
-    en: 'Becoming <span class="text-primary">[UNIT NAME]</span>',
+    es: 'Convirtiéndose en <span class="text-primary">[NOMBRE DE LA UNIDAD]</span>',
+    va: 'Convertint-se en <span class="text-primary">[NOM DE LA UNITAT]</span>'
   },
   "sejarah.ch2.p1": {
-    id: 'Pada <strong class="text-base-content">[Date]</strong>, nama resmi diubah menjadi <strong class="text-base-content">[Full Official Name]</strong>. Perubahan nama ini seiring dengan restrukturisasi organisasi.',
-    en: 'On <strong class="text-base-content">[Date]</strong>, the name was officially changed to <strong class="text-base-content">[Full Official Name]</strong>. This renaming coincided with an organizational restructuring.',
+    es: 'En <strong class="text-base-content">[Fecha]</strong>, el nombre se cambió oficialmente a <strong class="text-base-content">[Nombre Oficial Completo]</strong>. Este cambio de nombre coincidió con una reestructuración organizacional.',
+    va: 'En <strong class="text-base-content">[Data]</strong>, el nom es va canviar oficialment a <strong class="text-base-content">[Nom Oficial Complet]</strong>. Aquest canvi de nom va coincidir amb una reestructuració organitzacional.'
   },
   "sejarah.ch2.p2": {
-    id: "Sejak saat itu, unit ini menjadi salah satu komando utama yang bertugas menyelenggarakan operasi tingkat strategis.",
-    en: "Since then, the unit has served as one of the primary commands, tasked with conducting strategic-level operations.",
+    es: "Desde entonces, la unidad ha servido como uno de los comandos operativos principales, realizando operaciones a nivel estratégico.",
+    va: "Des d'aleshores, la unitat ha servit com un dels comandaments operatius principals, realitzant operacions a nivell estratègic."
   },
-  "sejarah.ch2.caption": { id: "Latihan Tembak Artileri", en: "Artillery Live Fire Exercise" },
+  "sejarah.ch2.caption": { es: "Ejercicio de Tiro Vivo de Artillería", va: "Exercici de Tir Viu d'Artilleria" },
 
-  "sejarah.ch3.year": { id: "Sekarang", en: "Present" },
+  "sejarah.ch3.year": { es: "Presente", va: "Present" },
   "sejarah.ch3.title": {
-    id: 'Alutsista <span class="text-primary">Modern</span>',
-    en: 'Modern <span class="text-primary">Equipment</span>',
+    es: 'Equipo <span class="text-primary">Moderno</span>',
+    va: 'Equip <span class="text-primary">Modern</span>'
   },
   "sejarah.ch3.p1": {
-    id: 'Saat ini unit mengoperasikan berbagai alutsista modern seperti <strong class="text-base-content">[main battle tanks]</strong>, artileri self-propelled, dan peluncur roket multi-laras.',
-    en: 'Today, the unit operates modern equipment including <strong class="text-base-content">[main battle tanks]</strong>, self-propelled artillery, and multiple rocket launcher systems.',
+    es: 'Hoy en día, la unidad opera equipos modernos incluyendo <strong class="text-base-content">[tanques principales de batalla]</strong>, artillería autopropulsada y sistemas de lanzamiento de cohetes múltiples.',
+    va: 'Avui en dia, la unitat opera equips moderns incloent <strong class="text-base-content">[tancs principals de batalla]</strong>, artilleria autopropulsada i sistemes de llançament de coets múltiples.'
   },
   "sejarah.ch3.p2": {
-    id: 'Selain pertahanan dalam negeri, prajurit turut bertugas dalam <strong class="text-base-content">misi perdamaian internasional</strong> di berbagai negara.',
-    en: 'Beyond domestic defense, soldiers serve in <strong class="text-base-content">international peacekeeping missions</strong> in various countries.',
+    es: 'Más allá de la defensa nacional, los soldados sirven en <strong class="text-base-content">misiones de mantenimiento de la paz internacionales</strong> en varios países.',
+    va: 'Més enllà de la defensa nacional, els soldats serveixen en <strong class="text-base-content">missions de manteniment de la pau internacionals</strong> en diversos països.'
   },
-  "sejarah.ch3.caption": { id: "[Equipment Name]", en: "[Equipment Name]" },
+  "sejarah.ch3.caption": { es: "[Nombre del Equipo]", va: "[Nom de l'Equip]" },
 
-  "sejarah.chrono.label": { id: "Kronologi", en: "Chronology" },
+  "sejarah.chrono.label": { es: "Cronología", va: "Cronologia" },
   "sejarah.chrono.title": {
-    id: 'Tonggak <span class="text-primary">Sejarah</span>',
-    en: 'Key <span class="text-primary">Milestones</span>',
+    es: 'Hitos <span class="text-primary">Clave</span>',
+    va: 'Fites <span class="text-primary">Clau</span>'
   },
-  "sejarah.stat1.label": { id: "Tahun Berdiri", en: "Years Active" },
-  "sejarah.stat2.label": { id: "Divisi", en: "Divisions" },
-  "sejarah.stat3.label": { id: "Misi", en: "Missions" },
+  "sejarah.stat1.label": { es: "Años Activos", va: "Anys Actius" },
+  "sejarah.stat2.label": { es: "Divisiones", va: "Divisions" },
+  "sejarah.stat3.label": { es: "Misiones", va: "Missions" },
 
   // ========================================
   // STRUKTUR PAGE

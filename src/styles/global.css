@@ -185,8 +185,8 @@
     z-index: 50;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background-color: color-mix(in srgb, var(--color-base-100) 85%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-base-content) 8%, transparent);
+    background-color: color-mix(in srgb, var(--color-base-100) 95%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-base-content) 20%, transparent);
   }
 
   /* ==============================
