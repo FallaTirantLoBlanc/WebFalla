@@ -10,10 +10,14 @@
 
 // ── Image Imports ──────────────────────────────────────────
 // CUSTOMIZE: Replace these images in src/assets/ with your own.
+import firma from "../assets/firma.jpg";
+import firmados from "../assets/firmados.jpg";
+import oreto from "../assets/oreto.jpg";
+import fotoFondo from "../assets/foto-fondo.jpg";
+import fotoHistoria from "../assets/foto-historia.jpg";
 import fotoInfantri from "../assets/foto-infantri.jpg";
 import tank from "../assets/alusista-tank.jpg";
 import artilery from "../assets/artilery.jpg";
-import fotoHistoria from "../assets/foto-historia.JPG";
 import pbbMisi from "../assets/PBB-misicongo.jpg";
 import rocketLauncher from "../assets/rocket-launcher.jpg";
 
@@ -36,31 +40,24 @@ export const heroData = {
 // ── Division / Department Cards ────────────────────────────
 export const divisions = [
   {
-    title: "Division 1",
-    location: "[City, Region]",
-    description:
-      "Commands operational units in the western region, including capital security operations.",
+    title: "Jorge Corbera Pla",
+    location: "Presidente de la falla",
+    description: "",
     iconType: "layers" as const,
+    imageSrc: firma.src,
+    imageAlt: "Jorge Corbera Pla",
     descKey: "card.div1.desc",
     descKeyStruktur: "card.div1.desc.struktur",
   },
   {
-    title: "Division 2",
-    location: "[City, Region]",
-    description:
-      "A division specializing in airborne and mechanized operations. Known as [Division Nickname].",
+    title: "Oreto Martorell Aranda",
+    location: "Fallera Mayor 2026",
+    description: "",
     iconType: "parachute" as const,
+    imageSrc: oreto.src,
+    imageAlt: "Oreto Martorell Aranda",
     descKey: "card.div2.desc",
     descKeyStruktur: "card.div2.desc.struktur",
-  },
-  {
-    title: "Division 3",
-    location: "[City, Region]",
-    description:
-      "The newest division, responsible for defense of the eastern territory.",
-    iconType: "crosshair" as const,
-    descKey: "card.div3.desc",
-    descKeyStruktur: "card.div3.desc.struktur",
   },
 ];
 
@@ -127,33 +124,21 @@ export const timelineEvents = [
 // CUSTOMIZE: Replace these images in src/assets/ with your own.
 export const galleryImages = [
   {
-    src: fotoInfantri.src,
-    alt: "Soldiers in Combat Formation",
+    src: firma.src,
+    alt: "Firma",
     i18n: "gallery.img1",
     span: "row-span-2 col-span-2",
   },
   {
-    src: tank.src,
-    alt: "Main Battle Tank",
+    src: firmados.src,
+    alt: "Firmados",
     i18n: "gallery.img2",
     span: "row-span-1 col-span-1",
   },
   {
-    src: artilery.src,
-    alt: "Artillery Live Fire Exercise",
+    src: fotoFondo.src,
+    alt: "Foto de fondo",
     i18n: "gallery.img3",
-    span: "row-span-1 col-span-1",
-  },
-  {
-    src: pbbMisi.src,
-    alt: "International Contingent",
-    i18n: "gallery.img5",
-    span: "row-span-2 col-span-2",
-  },
-  {
-    src: rocketLauncher.src,
-    alt: "Rocket Launcher System",
-    i18n: "gallery.img6",
     span: "row-span-1 col-span-1",
   },
 ];

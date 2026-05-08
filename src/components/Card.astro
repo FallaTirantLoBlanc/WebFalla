@@ -5,6 +5,8 @@ interface Props {
   location: string;
   iconType?: "layers" | "parachute" | "crosshair";
   descKey?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 const {
@@ -13,6 +15,8 @@ const {
   location,
   iconType = "layers",
   descKey,
+  imageSrc,
+  imageAlt,
 } = Astro.props;
 
 const icons = {
@@ -40,6 +44,15 @@ const icons = {
       <Fragment set:html={icons[iconType]} />
     </svg>
   </div>
+
+  {imageSrc ? (
+    <img
+      src={imageSrc}
+      alt={imageAlt || title}
+      class="w-16 h-16 rounded-full border-2 border-base-content/10 mb-4 object-cover"
+      loading="lazy"
+    />
+  ) : null}
 
   <h3 class="text-2xl mb-2 group-hover:text-primary transition-colors">
     {title}
