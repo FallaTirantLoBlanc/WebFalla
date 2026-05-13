@@ -1,6 +1,124 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
-<!-- Página: Inscripciones -->
-<section>
-  <h1>Inscripciones</h1>
-</section>
+
+<Layout title="Inscripciones" description="Inscríbete en la Falla Tirant lo Blanc y participa en nuestra comisión.">
+  <Navbar />
+
+  <main>
+    <section class="camo-bg">
+      <div class="text-center max-w-4xl mx-auto py-24 px-4 sm:px-6">
+        <div class="reveal">
+          <span
+            data-i18n="inscripciones.label"
+            class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+            >Inscripciones</span
+          >
+        </div>
+        <div class="reveal delay-100">
+          <h1
+            data-i18n-html="inscripciones.title"
+            class="text-5xl sm:text-6xl md:text-7xl leading-tight mb-6"
+          >
+            Únete a la Falla Tirant lo Blanc
+          </h1>
+        </div>
+        <div class="reveal delay-200">
+          <p
+            data-i18n="inscripciones.subtitle"
+            class="max-w-2xl mx-auto opacity-70 text-sm sm:text-base"
+          >
+            Inscríbete fácilmente con tus datos y únete a nuestra fiesta y tradición.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-base-200 py-20 sm:py-28">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="reveal mb-10">
+          <div class="rounded-3xl border border-base-300 bg-base-100 p-8 shadow-xl shadow-black/5">
+            <h2 data-i18n="inscripciones.form.heading" class="text-3xl mb-4">Formulario de inscripción</h2>
+            <p data-i18n="inscripciones.form.description" class="max-w-2xl opacity-70 text-sm">
+              Rellena los datos y pulsa enviar. Netlify recogerá el formulario directamente desde el hosting.
+            </p>
+
+            <form
+              name="inscripciones"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              class="mt-10 grid gap-6"
+            >
+              <input type="hidden" name="form-name" value="inscripciones" />
+              <input type="hidden" name="bot-field" />
+
+              <div class="grid gap-6 sm:grid-cols-2">
+                <label class="grid gap-2 text-sm font-semibold">
+                  <span data-i18n="inscripciones.form.name">Nombre</span>
+                  <input
+                    type="text"
+                    name="nombre"
+                    required
+                    autocomplete="name"
+                    placeholder="Ej. María Pérez"
+                    class="rounded-3xl border border-base-300 bg-base-200 px-4 py-3 text-sm text-base-content outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </label>
+
+                <label class="grid gap-2 text-sm font-semibold">
+                  <span data-i18n="inscripciones.form.date">Fecha de nacimiento</span>
+                  <input
+                    type="date"
+                    name="fecha"
+                    required
+                    class="rounded-3xl border border-base-300 bg-base-200 px-4 py-3 text-sm text-base-content outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </label>
+              </div>
+
+              <label class="grid gap-2 text-sm font-semibold">
+                <span data-i18n="inscripciones.form.surname">Apellidos</span>
+                <input
+                  type="text"
+                  name="apellidos"
+                  required
+                  autocomplete="family-name"
+                  placeholder="Ej. García López"
+                  class="rounded-3xl border border-base-300 bg-base-200 px-4 py-3 text-sm text-base-content outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
+              </label>
+
+              <label class="grid gap-2 text-sm font-semibold">
+                <span data-i18n="inscripciones.form.message">Mensaje libre</span>
+                <textarea
+                  name="mensaje"
+                  required
+                  maxlength="30"
+                  rows="4"
+                  placeholder="Dinos por qué quieres unirte..."
+                  class="rounded-3xl border border-base-300 bg-base-200 px-4 py-3 text-sm text-base-content outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none"
+                ></textarea>
+                <span class="text-[11px] opacity-60" data-i18n="inscripciones.form.hint">
+                  Máximo 30 caracteres.
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                class="btn-tactical self-start py-4 px-10"
+                data-i18n="inscripciones.form.submit"
+              >
+                Enviar inscripción
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

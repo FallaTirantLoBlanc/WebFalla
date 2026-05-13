@@ -60,6 +60,27 @@ export const translations = {
   },
   "home.gallery.link": { es: "Ver todas las fotos →", va: "Veure totes les fotos →" },
 
+  "inscripciones.label": { es: "Inscripciones", va: "Inscripcions" },
+  "inscripciones.title": {
+    es: 'Inscríbete a <span class="text-primary">Falla Tirant lo Blanc</span>',
+    va: 'Inscriu-te a <span class="text-primary">Falla Tirant lo Blanc</span>'
+  },
+  "inscripciones.subtitle": {
+    es: "Rellena el formulario para unirte a nuestra comisión fallera y participar en la fiesta.",
+    va: "Ompliu el formulari per unir-vos a la nostra comissió fallera i participar a la festa."
+  },
+  "inscripciones.form.heading": { es: "Formulario de inscripción", va: "Formulari d'inscripció" },
+  "inscripciones.form.description": {
+    es: "Netlify recogerá este formulario automáticamente desde el hosting.",
+    va: "Netlify recollirà aquest formulari automàticament des de l'allotjament."
+  },
+  "inscripciones.form.name": { es: "Nombre", va: "Nom" },
+  "inscripciones.form.surname": { es: "Apellidos", va: "Cognoms" },
+  "inscripciones.form.date": { es: "Selector de fecha", va: "Selector de data" },
+  "inscripciones.form.message": { es: "Texto libre", va: "Text lliure" },
+  "inscripciones.form.hint": { es: "Máximo 30 caracteres.", va: "Màxim 30 caràcters." },
+  "inscripciones.form.submit": { es: "Enviar inscripción", va: "Enviar inscripció" },
+
   // ========================================
   // DIVISION CARDS
   // ========================================
