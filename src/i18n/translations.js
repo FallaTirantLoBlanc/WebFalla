@@ -81,6 +81,21 @@ export const translations = {
   "inscripciones.form.hint": { es: "Máximo 30 caracteres.", va: "Màxim 30 caràcters." },
   "inscripciones.form.submit": { es: "Enviar inscripción", va: "Enviar inscripció" },
 
+  "gracias.label": { es: "Gracias", va: "Gràcies" },
+  "gracias.title": {
+    es: 'Gracias por tu <span class="text-primary">inscripción</span>',
+    va: 'Gràcies per la teua <span class="text-primary">inscripció</span>'
+  },
+  "gracias.subtitle": {
+    es: "Tu información ha sido recibida correctamente.",
+    va: "La teua informació ha estat rebuda correctament."
+  },
+  "gracias.description": {
+    es: "Pronto nos pondremos en contacto contigo para seguir con el proceso.",
+    va: "Prompte ens posarem en contacte amb tu per a continuar amb el procés."
+  },
+  "gracias.return": { es: "Volver a la página principal", va: "Tornar a la pàgina principal" },
+
   // ========================================
   // DIVISION CARDS
   // ========================================
