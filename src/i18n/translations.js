@@ -16,6 +16,11 @@ export const translations = {
   "nav.imagenes": { es: "Imágenes", va: "Imatges" },
   "nav.contacto": { es: "Contacto", va: "Contacte" },
   "nav.subtitle": { es: "Falla Tirant lo Blanc - L'Alcúdia", va: "Falla Tirant lo Blanc - L'Alcúdia" },
+  "calendario.label": { es: "Calendario", va: "Calendari" },
+  "calendario.title": { es: "Eventos y actividades", va: "Activitats" },
+  "calendario.subtitle": { es: "Consulta nuestro calendario de actividades.", va: "Consulta el nostre calendari d'activitats." },
+  "calendario.panel.title": { es: "Calendario eventos - Falla Tirant lo Blanc", va: "Calendari d'activitats - Falla Tirant lo Blanc" },
+  "calendario.panel.description": { es: "Aquí tienes el calendario público de la comisión.", va: "Ací tens el calendari públic de la comissió." },
 
   // ========================================
   // HERO
@@ -73,6 +78,16 @@ export const translations = {
   "inscripciones.form.description": {
     es: "Netlify recogerá este formulario automáticamente desde el hosting.",
     va: "Netlify recollirà aquest formulari automàticament des de l'allotjament."
+  },
+  "inscripciones.form.downloadInstructions": {
+    es: "Descarga esta hoja de inscripción, rellénala correctamente y adjúntala al formulario.",
+    va: "Descarrega aquesta fulla d'inscripció, ompli-la correctament i adjunta-la al formulari."
+  },
+  "inscripciones.form.downloadButton": { es: "Descargar inscripción.pdf", va: "Descarregar inscripció.pdf" },
+  "inscripciones.form.fileLabel": { es: "Adjuntar hoja de inscripción", va: "Adjuntar fulla d'inscripció" },
+  "inscripciones.form.fileHint": {
+    es: "Adjunta un PDF o una imagen del formulario relleno.",
+    va: "Adjunta un PDF o una imatge del formulari omplert."
   },
   "inscripciones.form.name": { es: "Nombre", va: "Nom" },
   "inscripciones.form.surname": { es: "Apellidos", va: "Cognoms" },

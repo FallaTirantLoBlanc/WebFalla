@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import inscripcionPdf from "../assets/inscripcion.pdf";
 ---
 
 <Layout title="Inscripciones" description="Inscríbete en la Falla Tirant lo Blanc y participa en nuestra comisión.">
@@ -41,14 +42,23 @@ import Footer from "../components/Footer.astro";
         <div class="reveal mb-10">
           <div class="rounded-3xl border border-base-300 bg-base-100 p-8 shadow-xl shadow-black/5">
             <h2 data-i18n="inscripciones.form.heading" class="text-3xl mb-4">Formulario de inscripción</h2>
-            <p data-i18n="inscripciones.form.description" class="max-w-2xl opacity-70 text-sm">
-              Rellena los datos y pulsa enviar. Netlify recogerá el formulario directamente desde el hosting.
-            </p>
+            <div class="mt-8 rounded-3xl border border-base-300 bg-base-200 p-6">
+              <p class="text-sm opacity-80 mb-4" data-i18n="inscripciones.form.downloadInstructions">Descarga esta hoja de inscripción, rellénala correctamente y adjúntala al formulario.</p>
+              <a
+                href={inscripcionPdf}
+                download
+                class="inline-flex items-center justify-center rounded-3xl bg-primary px-5 py-3 text-sm font-semibold text-base-100 transition hover:bg-primary-focus"
+                data-i18n="inscripciones.form.downloadButton"
+              >
+                Descargar inscripción.pdf
+              </a>
+            </div>
 
             <form
               name="inscripciones"
               method="POST"
               action="/gracias/"
+              enctype="multipart/form-data"
               netlify
               data-netlify-honeypot="bot-field"
               class="mt-10 grid gap-6"
@@ -104,6 +114,20 @@ import Footer from "../components/Footer.astro";
                 ></textarea>
                 <span class="text-[11px] opacity-60" data-i18n="inscripciones.form.hint">
                   Máximo 30 caracteres.
+                </span>
+              </label>
+
+              <label class="grid gap-2 text-sm font-semibold">
+                <span data-i18n="inscripciones.form.fileLabel">Adjuntar hoja de inscripción</span>
+                <input
+                  type="file"
+                  name="adjunto"
+                  accept="application/pdf,image/*"
+                  required
+                  class="rounded-3xl border border-base-300 bg-base-200 px-4 py-3 text-sm text-base-content outline-none transition file:cursor-pointer file:border-0 file:bg-base-100 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-base-content file:transition file:hover:bg-base-200"
+                />
+                <span class="text-[11px] opacity-60" data-i18n="inscripciones.form.fileHint">
+                  Adjunta un PDF o una imagen del formulario relleno.
                 </span>
               </label>
 
