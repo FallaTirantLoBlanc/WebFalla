@@ -1,6 +1,64 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
-<!-- Página: Contacto -->
-<section>
-  <h1>Contacto</h1>
-</section>
+
+<Layout title="Contacto" description="Contacta con la Falla Tirant lo Blanc"> 
+  <Navbar />
+
+  <main>
+    <section class="camo-bg">
+      <div class="text-center max-w-4xl mx-auto py-24 px-4 sm:px-6">
+        <div class="reveal">
+          <span data-i18n="contacto.label" class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Contacto</span>
+        </div>
+        <div class="reveal delay-100">
+          <h1 data-i18n="contacto.title" class="text-5xl sm:text-6xl md:text-7xl leading-tight mb-6">Contacto</h1>
+        </div>
+        <div class="reveal delay-200">
+          <p data-i18n="contacto.subtitle" class="max-w-2xl mx-auto opacity-70 text-sm sm:text-base">Para ponerse en contacto con la falla puede usar el correo, Instagram o hablar con algún fallero.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-base-200 py-20 sm:py-28">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="reveal mb-10">
+          <div class="rounded-3xl border border-base-300 bg-base-100 p-8 shadow-xl shadow-black/5">
+            <p data-i18n="contacto.intro" class="max-w-3xl text-sm sm:text-base opacity-80 mb-10">Si necesita contactar con la falla, puede usar cualquiera de estos canales formales y rápidos.</p>
+            <div class="grid gap-6 sm:grid-cols-3">
+              <article class="rounded-3xl border border-base-300 bg-base-200 p-6 shadow-sm shadow-black/5">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-base-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M2.25 5.5A3.25 3.25 0 015.5 2.25h13A3.25 3.25 0 0121.75 5.5v13a3.25 3.25 0 01-3.25 3.25h-13A3.25 3.25 0 012.25 18.5v-13zM5.5 4.75A.75.75 0 004.75 5.5v.675l7.125 4.797a1.25 1.25 0 001.25 0L19.25 6.175V5.5a.75.75 0 00-.75-.75h-13zM19.25 18.5a.75.75 0 00.75-.75V7.971l-7.229 4.872a2.75 2.75 0 01-2.742 0L4.25 7.97V17.75a.75.75 0 00.75.75h13z"/></svg>
+                </div>
+                <h3 data-i18n="contacto.email.title" class="text-lg font-semibold mb-2">Correo electrónico</h3>
+                <p data-i18n="contacto.email.desc" class="text-sm opacity-75 mb-4">Escribe a nuestra dirección oficial para consultas y solicitudes.</p>
+                <a href="mailto:fallatirantloblanc@gmail.com" class="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-base-100 transition hover:bg-primary-focus">fallatirantloblanc@gmail.com</a>
+              </article>
+
+              <article class="rounded-3xl border border-base-300 bg-base-200 p-6 shadow-sm shadow-black/5">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-base-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M7.5 2.25h9A5.25 5.25 0 0121.75 7.5v9a5.25 5.25 0 01-5.25 5.25h-9A5.25 5.25 0 012.25 16.5v-9A5.25 5.25 0 017.5 2.25zm0 1.5A3.75 3.75 0 003.75 7.5v9A3.75 3.75 0 007.5 20.25h9a3.75 3.75 0 003.75-3.75v-9A3.75 3.75 0 0016.5 3.75h-9z"/><path d="M12 7.25a4.75 4.75 0 104.75 4.75A4.757 4.757 0 0012 7.25zm0 1.5a3.25 3.25 0 11-3.25 3.25A3.254 3.254 0 0112 8.75zm4.75-2.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+                </div>
+                <h3 data-i18n="contacto.insta.title" class="text-lg font-semibold mb-2">Instagram</h3>
+                <p data-i18n="contacto.insta.desc" class="text-sm opacity-75 mb-4">Sigue nuestra cuenta para novedades, noticias y mensajes directos.</p>
+                <a href="https://www.instagram.com/fallatirantloblanc" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-base-100 transition hover:bg-primary-focus">@fallatirantloblanc</a>
+              </article>
+
+              <article class="rounded-3xl border border-base-300 bg-base-200 p-6 shadow-sm shadow-black/5">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-base-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M12 2.25a5.25 5.25 0 015.25 5.25c0 1.335-.496 2.553-1.314 3.487A7.487 7.487 0 0119.5 17.25a7.5 7.5 0 11-15 0c0-2.623 1.334-4.927 3.323-6.268A5.248 5.248 0 0112 2.25zm0 1.5a3.75 3.75 0 00-3.732 3.148 7.484 7.484 0 015.588 2.044l.37.334.37-.335a7.486 7.486 0 015.588-2.043A3.75 3.75 0 0012 3.75zM7.5 18.75a5.997 5.997 0 0111.122-1.247A7.472 7.472 0 0012 18.75a7.47 7.47 0 00-4.871-1.247z"/></svg>
+                </div>
+                <h3 data-i18n="contacto.fallero.title" class="text-lg font-semibold mb-2">Contacto directo</h3>
+                <p data-i18n="contacto.fallero.desc" class="text-sm opacity-75">También puedes ponerte en contacto con algún fallero de la comisión para consultas más directas y cercanas.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

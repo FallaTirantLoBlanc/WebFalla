@@ -25,23 +25,21 @@ import Footer from "../components/Footer.astro";
     <section class="bg-base-200 py-20 sm:py-28">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="reveal mb-10">
-          <div class="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-xl shadow-black/5">
+          <div class="w-full max-w-full overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-6 shadow-xl shadow-black/5">
             <h2 data-i18n="calendario.panel.title" class="text-3xl mb-4">Calendario eventos - Falla Tirant lo Blanc</h2>
             <p data-i18n="calendario.panel.description" class="max-w-2xl opacity-70 text-sm mb-6">Aquí tienes el calendario público de la comisión.</p>
 
-            <div class="w-full">
-              <div class="mx-auto max-w-full">
-                <iframe
-                  src="https://calendar.google.com/calendar/embed?src=06e175c8300c3d846c72d9d181efb953b4e5a7e7a2e13f9200fe32148548f01d%40group.calendar.google.com&ctz=Europe%2FMadrid&mode=MONTH"
-                  style="border:0; width:100%; min-height:700px;"
-                  width="100%"
-                  height="800"
-                  frameborder="0"
-                  scrolling="no"
-                  title="Calendario Falla Tirant lo Blanc"
-                  class="rounded-2xl"
-                ></iframe>
-              </div>
+            <div class="w-full overflow-hidden rounded-2xl">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?src=06e175c8300c3d846c72d9d181efb953b4e5a7e7a2e13f9200fe32148548f01d%40group.calendar.google.com&ctz=Europe%2FMadrid&mode=MONTH"
+                style="border:0; width:100%; min-height:620px;"
+                width="100%"
+                height="700"
+                frameborder="0"
+                scrolling="no"
+                title="Calendario Falla Tirant lo Blanc"
+                class="w-full rounded-2xl"
+              ></iframe>
             </div>
           </div>
         </div>
