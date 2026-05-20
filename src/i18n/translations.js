@@ -40,6 +40,7 @@ export const translations = {
     es: "La Falla Tirant lo Blanc es una comisión fallera dedicada a la tradición, la fiesta y la cultura en L'Alcúdia.",
     va: "La Falla Tirant lo Blanc és una comissió fallera dedicada a la tradició, la festa i la cultura a L'Alcúdia."
   },
+  "hero.title": { es: "FALLAS - 2027", va: "FALLES - 2027" },
   "hero.cta1": { es: "Nuestra Historia", va: "La nostra història" },
   "hero.cta2": { es: "Estructura", va: "Estructura" },
 
@@ -202,6 +203,11 @@ export const translations = {
   "gallery.img4": { id: "Misi Perdamaian", en: "Peacekeeping Mission" },
   "gallery.img5": { id: "Kontingen Internasional", en: "International Contingent" },
   "gallery.img6": { id: "Sistem Peluncur Roket", en: "Rocket Launcher System" },
+
+  // Gallery page translations
+  "imagenes.label": { es: "Imágenes", va: "Imatges" },
+  "imagenes.title": { es: 'Galería de <span class="text-primary">Fotos</span>', va: 'Galeria de <span class="text-primary">Fotos</span>' },
+  "imagenes.desc": { es: "Explora nuestra colección de momentos especiales de la Falla.", va: "Explora la nostra col·lecció de moments especials de la Falla." },
 
   // ========================================
   // SEJARAH PAGE

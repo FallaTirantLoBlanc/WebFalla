@@ -16,10 +16,11 @@ import oreto from "../assets/oreto.jpg";
 import fotoFondo from "../assets/foto-fondo.jpg";
 import fotoHistoria from "../assets/foto-historia.jpg";
 import fotoInfantri from "../assets/foto-infantri.jpg";
-import tank from "../assets/alusista-tank.jpg";
-import artilery from "../assets/artilery.jpg";
-import pbbMisi from "../assets/PBB-misicongo.jpg";
-import rocketLauncher from "../assets/rocket-launcher.jpg";
+import fotowebuno from "../assets/fotowebuno.JPG";
+import fotowebdos from "../assets/fotowebdos.JPG";
+import fotowebtres from "../assets/fotowebtres.JPG";
+import fotowebcuatro from "../assets/fotowebcuatro.JPG";
+import fotowebcinco from "../assets/fotowebcinco.JPG";
 
 // ── Hero Section ───────────────────────────────────────────
 export const heroData = {
@@ -141,6 +142,45 @@ export const galleryImages = [
     i18n: "gallery.img3",
     span: "row-span-1 col-span-1",
   },
+  {
+    src: fotowebtres.src,
+    alt: "Foto Web Tres",
+    i18n: "gallery.img4",
+    span: "row-span-1 col-span-1",
+  },
+];
+
+// ── Web Gallery Images ──────────────────────────────────────
+// Gallery images for the imágenes page
+export const webGalleryImages = [
+  {
+    src: fotowebuno.src,
+    alt: "Falla - Foto Web Uno",
+  },
+  {
+    src: fotowebdos.src,
+    alt: "Falla - Foto Web Dos",
+  },
+  {
+    src: fotowebtres.src,
+    alt: "Falla - Foto Web Tres",
+  },
+  {
+    src: fotowebcuatro.src,
+    alt: "Falla - Foto Web Cuatro",
+  },
+  {
+    src: fotowebcinco.src,
+    alt: "Falla - Foto Web Cinco",
+  },
+  {
+    src: oreto.src,
+    alt: "Oreto",
+  },
+  {
+    src: fotoHistoria.src,
+    alt: "Foto Historia",
+  },
 ];
 
 // ── History Page Chapters ──────────────────────────────────
@@ -175,7 +215,7 @@ export const historyChapters = [
     titleHtml: 'Becoming <span class="text-primary">[UNIT NAME]</span>',
     captionI18nKey: "sejarah.ch2.caption",
     caption: "Artillery Live Fire Exercise",
-    image: artilery,
+    image: fotoHistoria,
     imageAlt: "Artillery exercise",
     paragraphs: [
       {
@@ -197,7 +237,7 @@ export const historyChapters = [
     titleHtml: 'Modern <span class="text-primary">Equipment</span>',
     captionI18nKey: "sejarah.ch3.caption",
     caption: "[Equipment Name]",
-    image: tank,
+    image: fotoInfantri,
     imageAlt: "Modern military equipment",
     paragraphs: [
       {

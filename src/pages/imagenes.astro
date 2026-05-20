@@ -1,6 +1,203 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { webGalleryImages } from "../data/content";
 ---
-<!-- Página: Imágenes -->
-<section>
-  <h1>Imágenes</h1>
-</section>
+
+<Layout title="Galería de Imágenes" description="Galería de imágenes de la Falla">
+  <Navbar />
+  <main>
+    <section class="min-h-screen py-12 md:py-16">
+    <!-- Header -->
+    <div class="mb-12 md:mb-16 text-center">
+      <h1 data-i18n-html="imagenes.title" class="text-4xl md:text-5xl font-bold tracking-wider mb-4 text-accent">Galería de Imágenes</h1>
+      <div class="w-16 h-1 bg-accent mx-auto mb-6"></div>
+      <p data-i18n="imagenes.desc" class="text-base md:text-lg text-base-content/80 max-w-2xl mx-auto">Explora nuestra colección de momentos especiales de la Falla.</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto px-4" id="galleryGrid">
+      {
+        webGalleryImages.map((image, index) => (
+          <div
+            class="gallery-card group relative h-64 sm:h-72 md:h-80 overflow-hidden rounded-lg bg-secondary shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer"
+            data-index={index}
+          >
+            <!-- Image -->
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-secondary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            <!-- Icon -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-accent/20 group-hover:bg-accent/80 flex items-center justify-center transition-all duration-300">
+              <svg
+                class="w-6 h-6 text-secondary opacity-0 group-hover:opacity-100"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                />
+              </svg>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Modal Lightbox -->
+  <div
+    id="imageModal"
+    class="fixed inset-0 bg-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4"
+    onclick="handleModalClick(event)"
+  >
+    <div
+      class="relative max-w-4xl w-full max-h-[90vh] bg-secondary rounded-lg overflow-hidden"
+      onclick="event.stopPropagation()"
+    >
+      <!-- Close Button -->
+      <button
+        class="absolute top-4 right-4 z-10 bg-accent hover:bg-accent/80 text-secondary rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-300"
+        onclick="closeModal()"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Image Container -->
+      <div class="relative w-full h-full flex items-center justify-center">
+        <img
+          id="modalImage"
+          src=""
+          alt=""
+          class="max-w-full max-h-[85vh] object-contain"
+        />
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 md:px-6">
+        <button
+          class="bg-accent/20 hover:bg-accent/50 text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all duration-300"
+          onclick="prevImage()"
+        >
+          <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+
+        <button
+          class="bg-accent/20 hover:bg-accent/50 text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all duration-300"
+          onclick="nextImage()"
+        >
+          <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ images: webGalleryImages }}>
+    let currentImageIndex = 0;
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const galleryGrid = document.getElementById("galleryGrid");
+
+    // Expose functions to global scope
+    window.openModal = function(index) {
+      currentImageIndex = index;
+      showImage();
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    };
+
+    window.closeModal = function() {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+    };
+
+    window.showImage = function() {
+      const image = images[currentImageIndex];
+      modalImage.src = image.src;
+      modalImage.alt = image.alt;
+    };
+
+    window.nextImage = function() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showImage();
+    };
+
+    window.prevImage = function() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      showImage();
+    };
+
+    window.handleModalClick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    // Add click listeners to gallery cards
+    function initGallery() {
+      const cards = galleryGrid.querySelectorAll(".gallery-card");
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const index = parseInt(card.dataset.index);
+          openModal(index);
+        });
+      });
+    }
+
+    // Initialize gallery
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initGallery);
+    } else {
+      initGallery();
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (modal.classList.contains("hidden")) return;
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
+
+  <style>
+    .gallery-card {
+      aspect-ratio: auto;
+    }
+
+    /* Smooth transitions */
+    @media (prefers-reduced-motion: no-preference) {
+      .gallery-card img {
+        will-change: transform;
+      }
+    }
+
+    /* Touch-friendly on mobile */
+    @media (max-width: 640px) {
+      .gallery-card {
+        min-height: 240px;
+      }
+    }
+  </style>
+  </section>
+  </main>
+  <Footer />
+</Layout>
