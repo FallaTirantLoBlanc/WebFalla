@@ -40,6 +40,8 @@ import { eventoNames } from "../data/eventos/names.ts";
             >
               <input type="hidden" name="form-name" value="eventos" />
               <input type="hidden" name="bot-field" />
+              <input type="hidden" name="person_name" id="selected-person-name" value="" />
+              <input type="hidden" name="person_status" id="selected-person-status" value="" />
 
               <div class="grid gap-4">
                 <div class="rounded-3xl border border-base-300 bg-base-100 p-5 shadow-lg shadow-black/5">
@@ -106,6 +108,8 @@ import { eventoNames } from "../data/eventos/names.ts";
       const form = document.getElementById('eventos-form');
       const submitMessage = document.getElementById('submit-message');
       const filterInput = document.getElementById('name-filter');
+      const hiddenNameInput = document.getElementById('selected-person-name');
+      const hiddenStatusInput = document.getElementById('selected-person-status');
 
       function updateSubmitVisibility(){
         const any = Object.keys(selections).length > 0;
@@ -114,7 +118,8 @@ import { eventoNames } from "../data/eventos/names.ts";
       }
 
       function clearGenerated(){
-        document.querySelectorAll('.generated-input').forEach(el => el.remove());
+        if (hiddenNameInput) hiddenNameInput.value = '';
+        if (hiddenStatusInput) hiddenStatusInput.value = '';
       }
 
       function filterGuestList(){
@@ -155,9 +160,13 @@ import { eventoNames } from "../data/eventos/names.ts";
           if (selections[name] === status) {
             delete selections[name];
             selectedName = null;
+            if (hiddenNameInput) hiddenNameInput.value = '';
+            if (hiddenStatusInput) hiddenStatusInput.value = '';
           } else {
             selections[name] = status;
             selectedName = name;
+            if (hiddenNameInput) hiddenNameInput.value = name;
+            if (hiddenStatusInput) hiddenStatusInput.value = status === 'si' ? 'Asistiré' : 'No asistiré';
           }
 
           document.querySelectorAll(`button[data-name="${name}"]`).forEach(b => {
@@ -195,23 +204,6 @@ import { eventoNames } from "../data/eventos/names.ts";
         submitMessage.style.display = 'block';
         submitBtn.disabled = true;
         buttons.forEach(b => b.disabled = true);
-
-        // inject hidden inputs for selected entries
-        Object.entries(selections).forEach(([name,status]) => {
-          const inpName = document.createElement('input');
-          inpName.type = 'hidden';
-          inpName.name = 'person_name[]';
-          inpName.value = name;
-          inpName.className = 'generated-input';
-          form.appendChild(inpName);
-
-          const inpStatus = document.createElement('input');
-          inpStatus.type = 'hidden';
-          inpStatus.name = 'person_status[]';
-          inpStatus.value = status === 'si' ? 'Asistire' : 'No asistire';
-          inpStatus.className = 'generated-input';
-          form.appendChild(inpStatus);
-        });
 
         // Slight delay so message is visible, then submit form normally
         setTimeout(() => form.submit(), 700);
