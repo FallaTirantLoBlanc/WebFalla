@@ -241,6 +241,85 @@
     transform: scale(1);
   }
 
+  /* Selectable buttons for event attendance */
+  .selectable-btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+    min-width: 90px;
+    text-align: center;
+    user-select: none;
+  }
+
+  .selectable-btn:active {
+    transform: translateY(1px) scale(0.995);
+  }
+
+  .selectable-btn.selected {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  }
+
+  /* Choice pair states: de-emphasize opposite option */
+  .choice-pair.selected-yes .selectable-btn--no,
+  .choice-pair.selected-no .selectable-btn--yes {
+    opacity: 0.45;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .selectable-btn--yes {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-success) 85%, #fff 15%), var(--color-success));
+    color: var(--color-success-content);
+    border-color: color-mix(in srgb, var(--color-success) 60%, transparent);
+  }
+
+  .selectable-btn--no {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-error) 85%, #fff 15%), var(--color-error));
+    color: var(--color-error-content);
+    border-color: color-mix(in srgb, var(--color-error) 60%, transparent);
+  }
+
+  .selectable-btn--outlined {
+    background: transparent;
+    color: var(--color-base-content);
+    border-color: color-mix(in srgb, var(--color-base-content) 10%, transparent);
+  }
+
+  /* Prominent submit for mobile-first UX */
+  .btn-primary-prominent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 0 10px 30px rgba(75,83,32,0.18);
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .btn-primary-prominent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(75,83,32,0.22);
+  }
+
+  @media(min-width:640px){
+    .btn-primary-prominent { width: auto; padding: 0.9rem 2rem; }
+    .selectable-btn { min-width: 110px; }
+  }
+
   /* Staggered delays */
   .delay-100 { transition-delay: 100ms; }
   .delay-200 { transition-delay: 200ms; }

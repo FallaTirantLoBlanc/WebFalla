@@ -1,0 +1,221 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { eventoNames } from "../data/eventos/names.ts";
+---
+
+<Layout title="Eventos" description="Próxima fiesta - 13 de junio">
+  <Navbar />
+
+  <main>
+    <section class="camo-bg">
+      <div class="text-center max-w-4xl mx-auto py-24 px-4 sm:px-6">
+        <div class="reveal">
+          <span data-i18n="eventos.label" class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Próxima fiesta</span>
+        </div>
+        <div class="reveal delay-100">
+          <h1 data-i18n="eventos.title" class="text-5xl sm:text-6xl md:text-7xl leading-tight mb-6">13 de junio</h1>
+        </div>
+        <div class="reveal delay-200">
+          <p data-i18n="eventos.subtitle" class="max-w-2xl mx-auto opacity-70 text-sm sm:text-base">Confirma asistencia en la lista de prueba. Selecciona "Asistiré" o "No asistiré" junto a cada nombre y envía el único invitado elegido.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-base-200 py-20 sm:py-28">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="reveal mb-10">
+          <div class="w-full max-w-full overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-8 shadow-xl shadow-black/5">
+            <h2 class="text-3xl mb-4">Lista de asistentes</h2>
+
+            <form
+              name="eventos"
+              method="POST"
+              action="/gracias/"
+              netlify
+              data-netlify-honeypot="bot-field"
+              class="mt-6"
+              id="eventos-form"
+            >
+              <input type="hidden" name="form-name" value="eventos" />
+              <input type="hidden" name="bot-field" />
+
+              <div class="grid gap-4">
+                <div class="rounded-3xl border border-base-300 bg-base-100 p-5 shadow-lg shadow-black/5">
+                  <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <label for="name-filter" class="text-sm font-semibold">Busca por nombre / apellidos</label>
+                        <p class="text-xs opacity-70">Filtra la lista para encontrar tu nombre rápidamente.</p>
+                      </div>
+                      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-base-200 text-base-content border border-base-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                      </span>
+                    </div>
+                    <input
+                      id="name-filter"
+                      type="search"
+                      placeholder="Búscate por nombre / apellidos"
+                      class="input input-bordered input-lg w-full bg-base-200 border-base-300 placeholder:text-base-content/50"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+
+                <!-- Lista de nombres importados -->
+                <div
+                  id="guest-list"
+                  class="grid gap-3 max-h-[68vh] overflow-y-auto rounded-3xl border border-base-300 bg-base-100 p-4 shadow-inner shadow-black/5"
+                >
+                  <div class="space-y-3">
+                    {eventoNames.map((name) => (
+                      <div data-name={name} class="guest-row flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-base-300 bg-base-200 p-3">
+                        <div class="text-sm sm:text-base">{name}</div>
+                        <div class="flex gap-2 mt-2 sm:mt-0 choice-pair" data-name={name}>
+                          <button type="button" data-name={name} data-status="si" class="selectable-btn selectable-btn--yes" aria-pressed="false" data-i18n="eventos.button.yes">Asistiré</button>
+                          <button type="button" data-name={name} data-status="no" class="selectable-btn selectable-btn--no" aria-pressed="false" data-i18n="eventos.button.no">No asistiré</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div id="form-actions" class="mt-6 flex justify-center">
+                  <div style="width:100%;max-width:420px;text-align:center">
+                    <button id="submit-btn" type="submit" class="btn-primary-prominent" style="display:none;" aria-hidden="true" data-i18n="eventos.submit">Enviar inscripción</button>
+                    <div id="submit-message" class="mt-3" style="display:none;color:var(--color-success);font-weight:700;" data-i18n="eventos.submittedMessage">Inscripción realizada</div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script is:inline>
+    (function(){
+      const selections = {};
+      let selectedName = null;
+      const buttons = document.querySelectorAll('.selectable-btn');
+      const submitBtn = document.getElementById('submit-btn');
+      const form = document.getElementById('eventos-form');
+      const submitMessage = document.getElementById('submit-message');
+      const filterInput = document.getElementById('name-filter');
+
+      function updateSubmitVisibility(){
+        const any = Object.keys(selections).length > 0;
+        submitBtn.style.display = any ? 'inline-flex' : 'none';
+        submitBtn.setAttribute('aria-hidden', any ? 'false' : 'true');
+      }
+
+      function clearGenerated(){
+        document.querySelectorAll('.generated-input').forEach(el => el.remove());
+      }
+
+      function filterGuestList(){
+        const query = filterInput?.value.trim().toLowerCase() || '';
+        document.querySelectorAll('.guest-row').forEach(row => {
+          const name = row.getAttribute('data-name') || '';
+          row.style.display = query && !name.toLowerCase().includes(query) ? 'none' : '';
+        });
+      }
+
+      function clearPreviousSelection(){
+        if (!selectedName) return;
+        delete selections[selectedName];
+        document.querySelectorAll(`button[data-name="${selectedName}"]`).forEach(b => {
+          b.setAttribute('aria-pressed', 'false');
+          b.classList.remove('selected');
+        });
+        const previousPair = document.querySelector(`.choice-pair[data-name="${selectedName}"]`);
+        if (previousPair) {
+          previousPair.classList.remove('selected-yes', 'selected-no');
+        }
+        selectedName = null;
+      }
+
+      filterInput?.addEventListener('input', () => {
+        filterGuestList();
+      });
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.getAttribute('data-name');
+          const status = btn.getAttribute('data-status');
+
+          if (selectedName && selectedName !== name) {
+            clearPreviousSelection();
+          }
+
+          if (selections[name] === status) {
+            delete selections[name];
+            selectedName = null;
+          } else {
+            selections[name] = status;
+            selectedName = name;
+          }
+
+          document.querySelectorAll(`button[data-name="${name}"]`).forEach(b => {
+            const matches = selections[name] && b.getAttribute('data-status') === selections[name];
+            b.setAttribute('aria-pressed', matches ? 'true' : 'false');
+            if (matches) {
+              b.classList.add('selected');
+            } else {
+              b.classList.remove('selected');
+            }
+          });
+
+          const pair = document.querySelector(`.choice-pair[data-name="${name}"]`);
+          if (pair) {
+            pair.classList.remove('selected-yes','selected-no');
+            if (selections[name] === 'si') pair.classList.add('selected-yes');
+            if (selections[name] === 'no') pair.classList.add('selected-no');
+          }
+
+          updateSubmitVisibility();
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        // If nothing selected, let the user know and prevent submission
+        if(Object.keys(selections).length === 0){
+          e.preventDefault();
+          alert('Selecciona al menos una persona para enviar.');
+          return;
+        }
+
+        // Show success message, disable interactions and then submit (gives user feedback before navigation)
+        e.preventDefault();
+        clearGenerated();
+        submitMessage.style.display = 'block';
+        submitBtn.disabled = true;
+        buttons.forEach(b => b.disabled = true);
+
+        // inject hidden inputs for selected entries
+        Object.entries(selections).forEach(([name,status]) => {
+          const inpName = document.createElement('input');
+          inpName.type = 'hidden';
+          inpName.name = 'person_name[]';
+          inpName.value = name;
+          inpName.className = 'generated-input';
+          form.appendChild(inpName);
+
+          const inpStatus = document.createElement('input');
+          inpStatus.type = 'hidden';
+          inpStatus.name = 'person_status[]';
+          inpStatus.value = status === 'si' ? 'Asistire' : 'No asistire';
+          inpStatus.className = 'generated-input';
+          form.appendChild(inpStatus);
+        });
+
+        // Slight delay so message is visible, then submit form normally
+        setTimeout(() => form.submit(), 700);
+      });
+    })();
+  </script>
+</Layout>
