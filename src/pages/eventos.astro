@@ -200,7 +200,6 @@ import { eventoNames } from "../data/eventos/names.ts";
 
         // Show success message, disable interactions and then submit (gives user feedback before navigation)
         e.preventDefault();
-        clearGenerated();
         submitMessage.style.display = 'block';
         submitBtn.disabled = true;
         buttons.forEach(b => b.disabled = true);
