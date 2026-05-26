@@ -99,114 +99,108 @@ import { eventoNames } from "../data/eventos/names.ts";
 
   <Footer />
 
-  <script is:inline>
-    (function(){
-      const selections = {};
-      let selectedName = null;
-      const buttons = document.querySelectorAll('.selectable-btn');
-      const submitBtn = document.getElementById('submit-btn');
-      const form = document.getElementById('eventos-form');
-      const submitMessage = document.getElementById('submit-message');
-      const filterInput = document.getElementById('name-filter');
-      const hiddenNameInput = document.getElementById('selected-person-name');
-      const hiddenStatusInput = document.getElementById('selected-person-status');
+<script is:inline>
+  (function(){
+    // Ahora "selections" guardará pares { "Nombre": "si"/"no" } de hasta 5 personas
+    const selections = {}; 
+    const MAX_SELECTIONS = 5;
 
-      function updateSubmitVisibility(){
-        const any = Object.keys(selections).length > 0;
-        submitBtn.style.display = any ? 'inline-flex' : 'none';
-        submitBtn.setAttribute('aria-hidden', any ? 'false' : 'true');
-      }
+    const buttons = document.querySelectorAll('.selectable-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const form = document.getElementById('eventos-form');
+    const submitMessage = document.getElementById('submit-message');
+    const filterInput = document.getElementById('name-filter');
+    const hiddenNameInput = document.getElementById('selected-person-name');
+    const hiddenStatusInput = document.getElementById('selected-person-status');
 
-      function clearGenerated(){
-        if (hiddenNameInput) hiddenNameInput.value = '';
-        if (hiddenStatusInput) hiddenStatusInput.value = '';
-      }
+    function updateSubmitVisibility(){
+      const totalSelected = Object.keys(selections).length;
+      const any = totalSelected > 0;
+      submitBtn.style.display = any ? 'inline-flex' : 'none';
+      submitBtn.setAttribute('aria-hidden', any ? 'false' : 'true');
+    }
 
-      function filterGuestList(){
-        const query = filterInput?.value.trim().toLowerCase() || '';
-        document.querySelectorAll('.guest-row').forEach(row => {
-          const name = row.getAttribute('data-name') || '';
-          row.style.display = query && !name.toLowerCase().includes(query) ? 'none' : '';
-        });
-      }
-
-      function clearPreviousSelection(){
-        if (!selectedName) return;
-        delete selections[selectedName];
-        document.querySelectorAll(`button[data-name="${selectedName}"]`).forEach(b => {
-          b.setAttribute('aria-pressed', 'false');
-          b.classList.remove('selected');
-        });
-        const previousPair = document.querySelector(`.choice-pair[data-name="${selectedName}"]`);
-        if (previousPair) {
-          previousPair.classList.remove('selected-yes', 'selected-no');
-        }
-        selectedName = null;
-      }
-
-      filterInput?.addEventListener('input', () => {
-        filterGuestList();
+    function filterGuestList(){
+      const query = filterInput?.value.trim().toLowerCase() || '';
+      document.querySelectorAll('.guest-row').forEach(row => {
+        const name = row.getAttribute('data-name') || '';
+        row.style.display = query && !name.toLowerCase().includes(query) ? 'none' : '';
       });
+    }
 
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const name = btn.getAttribute('data-name');
-          const status = btn.getAttribute('data-status');
+    filterInput?.addEventListener('input', () => {
+      filterGuestList();
+    });
 
-          if (selectedName && selectedName !== name) {
-            clearPreviousSelection();
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name');
+        const status = btn.getAttribute('data-status');
+
+        // Si el usuario hace clic en el botón que ya estaba seleccionado, lo deselecciona
+        if (selections[name] === status) {
+          delete selections[name];
+        } else {
+          // Validar si ya se alcanzó el límite de 5 personas antes de agregar una nueva
+          const totalSelected = Object.keys(selections).length;
+          
+          // Si el nombre NO estaba en la lista (es una nueva persona) y ya hay 5, frenamos.
+          if (!selections[name] && totalSelected >= MAX_SELECTIONS) {
+            alert(`Puedes seleccionar un máximo de ${MAX_SELECTIONS} personas.`);
+            return;
           }
+          
+          // Guardar o actualizar el estado de la persona
+          selections[name] = status;
+        }
 
-          if (selections[name] === status) {
-            delete selections[name];
-            selectedName = null;
-            if (hiddenNameInput) hiddenNameInput.value = '';
-            if (hiddenStatusInput) hiddenStatusInput.value = '';
+        // Actualizar visualmente los dos botones de la fila actual
+        document.querySelectorAll(`button[data-name="${name}"]`).forEach(b => {
+          const matches = selections[name] && b.getAttribute('data-status') === selections[name];
+          b.setAttribute('aria-pressed', matches ? 'true' : 'false');
+          if (matches) {
+            b.classList.add('selected');
           } else {
-            selections[name] = status;
-            selectedName = name;
-            if (hiddenNameInput) hiddenNameInput.value = name;
-            if (hiddenStatusInput) hiddenStatusInput.value = status === 'si' ? 'Asistiré' : 'No asistiré';
+            b.classList.remove('selected');
           }
-
-          document.querySelectorAll(`button[data-name="${name}"]`).forEach(b => {
-            const matches = selections[name] && b.getAttribute('data-status') === selections[name];
-            b.setAttribute('aria-pressed', matches ? 'true' : 'false');
-            if (matches) {
-              b.classList.add('selected');
-            } else {
-              b.classList.remove('selected');
-            }
-          });
-
-          const pair = document.querySelector(`.choice-pair[data-name="${name}"]`);
-          if (pair) {
-            pair.classList.remove('selected-yes','selected-no');
-            if (selections[name] === 'si') pair.classList.add('selected-yes');
-            if (selections[name] === 'no') pair.classList.add('selected-no');
-          }
-
-          updateSubmitVisibility();
         });
-      });
 
-      form.addEventListener('submit', (e) => {
-        // If nothing selected, let the user know and prevent submission
-        if(Object.keys(selections).length === 0){
-          e.preventDefault();
-          alert('Selecciona al menos una persona para enviar.');
-          return;
+        // Actualizar clases contenedoras de la fila (estilos yes/no)
+        const pair = document.querySelector(`.choice-pair[data-name="${name}"]`);
+        if (pair) {
+          pair.classList.remove('selected-yes', 'selected-no');
+          if (selections[name] === 'si') pair.classList.add('selected-yes');
+          if (selections[name] === 'no') pair.classList.add('selected-no');
         }
 
-        // Show success message, disable interactions and then submit (gives user feedback before navigation)
-        e.preventDefault();
-        submitMessage.style.display = 'block';
-        submitBtn.disabled = true;
-        buttons.forEach(b => b.disabled = true);
-
-        // Slight delay so message is visible, then submit form normally
-        setTimeout(() => form.submit(), 700);
+        updateSubmitVisibility();
       });
-    })();
-  </script>
+    });
+
+    form.addEventListener('submit', (e) => {
+      const namesArray = Object.keys(selections);
+
+      if(namesArray.length === 0){
+        e.preventDefault();
+        alert('Selecciona al menos una persona para enviar.');
+        return;
+      }
+
+      // Mapeamos los estados para guardarlos de forma ordenada
+      const statusArray = namesArray.map(name => selections[name] === 'si' ? 'Asistiré' : 'No asistiré');
+
+      // Unimos los resultados por comas para enviarlos limpiamente a Netlify
+      if (hiddenNameInput) hiddenNameInput.value = namesArray.join(', ');
+      if (hiddenStatusInput) hiddenStatusInput.value = statusArray.join(', ');
+
+      e.preventDefault();
+      submitMessage.style.display = 'block';
+      submitBtn.disabled = true;
+      buttons.forEach(b => b.disabled = true);
+
+      // Pequeño delay para feedback visual antes del envío
+      setTimeout(() => form.submit(), 700);
+    });
+  })();
+</script>
 </Layout>

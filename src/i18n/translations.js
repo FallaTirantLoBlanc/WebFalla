@@ -15,10 +15,10 @@ export const translations = {
   "nav.inscripciones": { es: "Inscripciones", va: "Inscripcions" },
   "nav.imagenes": { es: "Imágenes", va: "Imatges" },
   "nav.contacto": { es: "Contacto", va: "Contacte" },
-  "nav.eventos": { es: "Eventos", va: "Esdeveniments" },
+  "nav.eventos": { es: "Eventos", va: "Actes" },
   "nav.subtitle": { es: "Falla Tirant lo Blanc - L'Alcúdia", va: "Falla Tirant lo Blanc - L'Alcúdia" },
   "eventos.label": { es: "Próxima fiesta", va: "Proper festa" },
-  "eventos.title": { es: "13 de junio", va: "13 de juny" },
+  "eventos.title": { es: "13 de junio - Fiesta de verano", va: "13 de juny - Festa d'estiu" },
   "eventos.subtitle": { es: "Confirma asistencia en el censo para el proximo acto.", va: "Confirma assistència en el censo per al pròxim acte." },
   "eventos.list.heading": { es: "Lista de asistentes", va: "Llista d'assistents" },
   "eventos.button.yes": { es: "Asistiré", va: "Assistiré" },
@@ -36,9 +36,9 @@ export const translations = {
   "contacto.fallero.title": { es: "Contacto directo", va: "Contacte directe" },
   "contacto.fallero.desc": { es: "También puedes ponerte en contacto con algún fallero de la comisión para consultas más directas y cercanas.", va: "També pots posar-te en contacte amb algun faller de la comissió per a consultes més directes i properes." },
   "calendario.label": { es: "Calendario", va: "Calendari" },
-  "calendario.title": { es: "Eventos y actividades", va: "Esdeveniments i activitats" },
+  "calendario.title": { es: "Eventos y actividades", va: "Activitats" },
   "calendario.subtitle": { es: "Consulta nuestro calendario de actividades.", va: "Consulta el nostre calendari d'activitats." },
-  "calendario.panel.title": { es: "Calendario eventos - Falla Tirant lo Blanc", va: "Calendari d'esdeveniments - Falla Tirant lo Blanc" },
+  "calendario.panel.title": { es: "Calendario eventos - Falla Tirant lo Blanc", va: "Calendari d'actes - Falla Tirant lo Blanc" },
   "calendario.panel.description": { es: "Aquí tienes el calendario público de la comisión.", va: "Ací tens el calendari públic de la comissió." },
 
   // ========================================
@@ -77,6 +77,8 @@ export const translations = {
     va: "La comissió està formada per diferents comissions i grups que treballen junts per a la festa."
   },
   "home.org.link": { es: "Ver todo →", va: "Veure tot →" },
+  "home.org.card1.location": { es: "Presidente de la falla", va: "President de la falla" },
+  "home.org.card2.location": { es: "Fallera Mayor 2026", va: "Fallera Major 2026" },
 
   "home.gallery.label": { es: "Galería", va: "Galeria" },
   "home.gallery.title": {
