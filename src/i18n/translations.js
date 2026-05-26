@@ -19,7 +19,7 @@ export const translations = {
   "nav.subtitle": { es: "Falla Tirant lo Blanc - L'Alcúdia", va: "Falla Tirant lo Blanc - L'Alcúdia" },
   "eventos.label": { es: "Próxima fiesta", va: "Proper festa" },
   "eventos.title": { es: "13 de junio - Fiesta de verano", va: "13 de juny - Festa d'estiu" },
-  "eventos.subtitle": { es: "Confirma asistencia en el censo para el proximo acto.", va: "Confirma assistència en el censo per al pròxim acte." },
+  "eventos.subtitle": { es: "Confirma asistencia en el censo para el proximo acto.", va: "Confirma assistència en el cens per al pròxim acte." },
   "eventos.list.heading": { es: "Lista de asistentes", va: "Llista d'assistents" },
   "eventos.button.yes": { es: "Asistiré", va: "Assistiré" },
   "eventos.button.no": { es: "No asistiré", va: "No assistiré" },
