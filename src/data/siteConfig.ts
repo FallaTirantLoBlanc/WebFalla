@@ -43,7 +43,6 @@ export const siteConfig = {
   navLinks: [
     { href: "/historia", i18nKey: "nav.historia", label: "Historia" },
     { href: "/calendario", i18nKey: "nav.calendario", label: "Calendario" },
-    { href: "/eventos", i18nKey: "nav.eventos", label: "Eventos" },
     { href: "/loteria-nadal", i18nKey: "nav.loteria", label: "Lotería Nadal" },
     { href: "/inscripciones", i18nKey: "nav.inscripciones", label: "Inscripciones" },
     { href: "/imagenes", i18nKey: "nav.imagenes", label: "Imágenes" },
