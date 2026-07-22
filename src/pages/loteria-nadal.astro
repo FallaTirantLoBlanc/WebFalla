@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import lotteryImg from "../assets/loteria.jpeg";
+---
+
+<Layout title="Lotería Nadal" description="Lotería de Nadal de la Falla Tirant lo Blanc"> 
+  <Navbar />
+
+  <main>
+    <section class="camo-bg">
+      <div class="text-center max-w-4xl mx-auto py-24 px-4 sm:px-6">
+        <div class="reveal">
+          <span data-i18n="loteria.label" class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Lotería Nadal</span>
+        </div>
+        <div class="reveal delay-100">
+          <h1 data-i18n="loteria.title" class="text-5xl sm:text-6xl md:text-7xl leading-tight mb-6">Lotería Nadal</h1>
+        </div>
+        <div class="reveal delay-200">
+          <p data-i18n="loteria.subtitle" class="max-w-2xl mx-auto opacity-70 text-sm sm:text-base">Ja està oberta la reserva de la Loteria de Nadal de la Falla Tirant lo Blanc</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-base-200 py-20 sm:py-28">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="reveal mb-10">
+          <div class="rounded-3xl border border-base-300 bg-base-100 p-8 shadow-xl shadow-black/5">
+            <!-- Imagen -->
+            <div class="mb-10 rounded-2xl overflow-hidden">
+              <img 
+                src={lotteryImg.src} 
+                alt="Lotería de Nadal" 
+                class="w-full h-auto object-cover rounded-2xl"
+              />
+            </div>
+
+            <!-- Contenido de texto -->
+            <div class="space-y-6">
+              <p data-i18n="loteria.text1" class="text-sm sm:text-base opacity-85">
+                Ja està oberta la reserva de la Loteria de Nadal de la Falla Tirant lo Blanc! *<br/>
+                No et quedes sense la teua!
+              </p>
+
+              <p data-i18n="loteria.text2" class="text-sm sm:text-base opacity-80">
+                Ja pots reservar la teua loteria enviant-nos un missatge directe (DM) a través de les nostres xarxes socials o posant-te en contacte amb qualsevol faller o fallera de la comissió.
+              </p>
+
+              <p data-i18n="loteria.text3" class="text-sm sm:text-base opacity-80">
+                Com cada any, esperem repartir molta il•lusió... i, qui sap, potser també algun premi!
+              </p>
+
+              <!-- Call to Action -->
+              <div class="mt-8 pt-6 border-t border-base-300">
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a 
+                    href="https://www.instagram.com/fallatirantloblanc" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-base-100 transition hover:bg-primary-focus"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 mr-2" fill="currentColor"><path d="M7.5 2.25h9A5.25 5.25 0 0121.75 7.5v9a5.25 5.25 0 01-5.25 5.25h-9A5.25 5.25 0 012.25 16.5v-9A5.25 5.25 0 017.5 2.25zm0 1.5A3.75 3.75 0 003.75 7.5v9A3.75 3.75 0 007.5 20.25h9a3.75 3.75 0 003.75-3.75v-9A3.75 3.75 0 0016.5 3.75h-9z"/><path d="M12 7.25a4.75 4.75 0 104.75 4.75A4.757 4.757 0 0012 7.25zm0 1.5a3.25 3.25 0 11-3.25 3.25A3.254 3.254 0 0112 8.75zm4.75-2.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+                    Enviar DM por Instagram
+                  </a>
+                  <a 
+                    href="mailto:fallatirantloblanc@gmail.com" 
+                    class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-base-100 transition hover:bg-primary-focus"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 mr-2" fill="currentColor"><path d="M2.25 5.5A3.25 3.25 0 015.5 2.25h13A3.25 3.25 0 0121.75 5.5v13a3.25 3.25 0 01-3.25 3.25h-13A3.25 3.25 0 012.25 18.5v-13zM5.5 4.75A.75.75 0 004.75 5.5v.675l7.125 4.797a1.25 1.25 0 001.25 0L19.25 6.175V5.5a.75.75 0 00-.75-.75h-13zM19.25 18.5a.75.75 0 00.75-.75V7.971l-7.229 4.872a2.75 2.75 0 01-2.742 0L4.25 7.97V17.75a.75.75 0 00.75.75h13z"/></svg>
+                    Enviar correo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
