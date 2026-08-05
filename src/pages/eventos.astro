@@ -42,6 +42,7 @@ import { eventoNames } from "../data/eventos/names.ts";
               <input type="hidden" name="bot-field" />
               <input type="hidden" name="person_name" id="selected-person-name" value="" />
               <input type="hidden" name="person_status" id="selected-person-status" value="" />
+              <input type="hidden" name="person_dni" id="selected-person-dni" value="" />
 
               <div class="grid gap-4">
                 <div class="rounded-3xl border border-base-300 bg-base-100 p-5 shadow-lg shadow-black/5">
@@ -72,7 +73,7 @@ import { eventoNames } from "../data/eventos/names.ts";
                 >
                   <div class="space-y-3">
                     {eventoNames.map((item) => (
-                      <div data-name={item.nombre} class="guest-row flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-base-300 bg-base-200 p-3">
+                      <div data-name={item.nombre} data-dni={item.dni} class="guest-row flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-base-300 bg-base-200 p-3">
                         <div class="text-sm sm:text-base">{item.nombre}</div>
                         <div class="flex gap-2 mt-2 sm:mt-0 choice-pair" data-name={item.nombre}>
                           <button type="button" data-name={item.nombre} data-status="si" class="selectable-btn selectable-btn--yes" aria-pressed="false" data-i18n="eventos.button.yes">Asistiré</button>
@@ -112,6 +113,14 @@ import { eventoNames } from "../data/eventos/names.ts";
     const filterInput = document.getElementById('name-filter');
     const hiddenNameInput = document.getElementById('selected-person-name');
     const hiddenStatusInput = document.getElementById('selected-person-status');
+    const hiddenDniInput = document.getElementById('selected-person-dni');
+    const nameToDni = {};
+
+    document.querySelectorAll('.guest-row').forEach(row => {
+      const name = row.getAttribute('data-name');
+      const dni = row.getAttribute('data-dni');
+      if(name) nameToDni[name] = dni || '';
+    });
 
     function updateSubmitVisibility(){
       const totalSelected = Object.keys(selections).length;
@@ -186,12 +195,45 @@ import { eventoNames } from "../data/eventos/names.ts";
         return;
       }
 
+      if (namesArray.length > MAX_SELECTIONS) {
+        e.preventDefault();
+        alert(`Solo puedes enviar un máximo de ${MAX_SELECTIONS} personas a la vez.`);
+        return;
+      }
+
+      // Comprobamos que las personas seleccionadas tienen DNI registrado
+      const selectedDnis = namesArray.map(name => nameToDni[name] || '');
+      if (selectedDnis.some(dni => !dni)) {
+        e.preventDefault();
+        alert('Uno de los nombres seleccionados no tiene DNI registrado. Elige otro nombre o revisa la lista.');
+        return;
+      }
+
+      const confirmationDni = window.prompt(
+        `Introduce el DNI de cualquiera de las personas seleccionadas (no es necesario el DNI de todas):\n${namesArray.join(', ')}`
+      );
+      if (!confirmationDni) {
+        e.preventDefault();
+        alert('Debes introducir un DNI para confirmar el envío.');
+        return;
+      }
+
+      const normalizedEntry = confirmationDni.trim().toUpperCase().replace(/\s+/g, '');
+      const validEntry = selectedDnis.some(dni => dni.trim().toUpperCase().replace(/\s+/g, '') === normalizedEntry);
+
+      if (!validEntry) {
+        e.preventDefault();
+        alert('DNI incorrecto. Comprueba el DNI de uno de los seleccionados y vuelve a intentarlo.');
+        return;
+      }
+
       // Mapeamos los estados para guardarlos de forma ordenada
       const statusArray = namesArray.map(name => selections[name] === 'si' ? 'Asistiré' : 'No asistiré');
 
       // Unimos los resultados por comas para enviarlos limpiamente a Netlify
       if (hiddenNameInput) hiddenNameInput.value = namesArray.join(', ');
       if (hiddenStatusInput) hiddenStatusInput.value = statusArray.join(', ');
+      if (hiddenDniInput) hiddenDniInput.value = selectedDnis.join(', ');
 
       e.preventDefault();
       submitMessage.style.display = 'block';
