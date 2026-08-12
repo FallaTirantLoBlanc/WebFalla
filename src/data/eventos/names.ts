@@ -106,7 +106,7 @@ export const eventoNames = [
   { nombre: "Carla Hernandez Jimenez", dni: "73667661H" },
   { nombre: "David Perez Martinez", dni: "20851269K" },
   { nombre: "Mireia Boix Jaen", dni: "73598761A" },
-  { nombre: "Paula Boix Terol", dni: "20815537P" },
+  { nombre: "Paula Boix Terol", dni: "24471703W" },
   { nombre: "Miguel Corral Benavent", dni: "73225608W" },
   { nombre: "Joan Verdu Monzo", dni: "73606880A" },
   { nombre: "Hugo Martinez Machi", dni: "24442337F" },
