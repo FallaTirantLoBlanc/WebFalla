@@ -17,7 +17,7 @@ export const translations = {
   "nav.contacto": { es: "Contacto", va: "Contacte" },
   "nav.eventos": { es: "Eventos", va: "Actes" },  "nav.loteria": { es: "Lotería Nadal", va: "Loteria Nadal" },  "nav.subtitle": { es: "Falla Tirant lo Blanc - L'Alcúdia", va: "Falla Tirant lo Blanc - L'Alcúdia" },
   "eventos.label": { es: "Próxima fiesta", va: "Proper festa" },
-  "eventos.title": { es: "04 de Septiembre - Cabalgata del Pito", va: "04 de Setembre - Cercavila del Pito" },
+  "eventos.title": { es: "17 de Octubre - Proclamació Falleres Majors", va: "17 de Octubre - Proclamació Falleres Majors" },
   "eventos.subtitle": { es: "Confirma asistencia en el censo para el proximo acto.", va: "Confirma assistència en el cens per al pròxim acte." },
   "eventos.list.heading": { es: "Lista de asistentes", va: "Llista d'assistents" },
   "eventos.button.yes": { es: "Asistiré", va: "Assistiré" },
