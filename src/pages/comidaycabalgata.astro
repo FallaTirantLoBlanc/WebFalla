@@ -201,30 +201,29 @@ import { eventoNames } from "../data/eventos/names.ts";
         return;
       }
 
-      // Comprobamos que las personas seleccionadas tienen DNI registrado
+      // Si hay participantes sin DNI (por ejemplo, menores), no bloqueamos el envío.
+      // Solo validamos la confirmación si al menos uno de los seleccionados tiene DNI registrado.
       const selectedDnis = namesArray.map(name => nameToDni[name] || '');
-      if (selectedDnis.some(dni => !dni)) {
-        e.preventDefault();
-        alert('Uno de los nombres seleccionados no tiene DNI registrado. Elige otro nombre o revisa la lista.');
-        return;
-      }
+      const validSelectedDnis = selectedDnis.filter(dni => dni && dni.trim());
 
-      const confirmationDni = window.prompt(
-        `Introduce el DNI de cualquiera de las personas seleccionadas (no es necesario el DNI de todas):\n${namesArray.join(', ')}`
-      );
-      if (!confirmationDni) {
-        e.preventDefault();
-        alert('Debes introducir un DNI para confirmar el envío.');
-        return;
-      }
+      if (validSelectedDnis.length > 0) {
+        const confirmationDni = window.prompt(
+          `Introduce el DNI de cualquiera de las personas seleccionadas con DNI registrado:\n${namesArray.join(', ')}`
+        );
+        if (!confirmationDni) {
+          e.preventDefault();
+          alert('Debes introducir un DNI para confirmar el envío.');
+          return;
+        }
 
-      const normalizedEntry = confirmationDni.trim().toUpperCase().replace(/\s+/g, '');
-      const validEntry = selectedDnis.some(dni => dni.trim().toUpperCase().replace(/\s+/g, '') === normalizedEntry);
+        const normalizedEntry = confirmationDni.trim().toUpperCase().replace(/\s+/g, '');
+        const validEntry = validSelectedDnis.some(dni => dni.trim().toUpperCase().replace(/\s+/g, '') === normalizedEntry);
 
-      if (!validEntry) {
-        e.preventDefault();
-        alert('DNI incorrecto. Comprueba el DNI de uno de los seleccionados y vuelve a intentarlo.');
-        return;
+        if (!validEntry) {
+          e.preventDefault();
+          alert('DNI incorrecto. Comprueba el DNI de uno de los seleccionados y vuelve a intentarlo.');
+          return;
+        }
       }
 
       // Mapeamos los estados para guardarlos de forma ordenada
